@@ -33,7 +33,8 @@ jobs:
         run: |
           pip install -r requirements.txt
           pip install pyinstaller
-          python Scripts/pywin32_postinstall.py -install
+          $postinstall = Join-Path (Split-Path (Get-Command python).Source) "Scripts\pywin32_postinstall.py"
+          python $postinstall -install
         shell: pwsh
 
       - name: Install Inno Setup
